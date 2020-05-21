@@ -1,16 +1,17 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
     }
 }
 
@@ -22,14 +23,25 @@ dependencies {
         exclude group: 'com.ogaclejapan.smarttablayout', module: 'utils-v4'
     }
     //fragment管理框架
-    implementation 'me.yokeyword:fragmentationx:1.0.1'
+    compileOnly 'me.yokeyword:fragmentationx:1.0.1'
     //腾讯X5Web
     implementation 'com.tencent.tbs.tbssdk:sdk:43903'
     //JsBridge
     implementation 'com.cisdi.qingzhu:jsbridge:1.0.0'
     //image picker
-    implementation 'com.lcy.base:easyPhotos:1.0.5'
+    compileOnly 'com.lcy.base:easyPhotos:1.0.5'
     //鲁班图片压缩
     implementation 'top.zibin:Luban-turbo:1.0.0'
     implementation files('libs/pldroid-shortvideo-1.16.2.jar')
+}
+
+publish {
+    artifactId = 'webview'
+    uploadName = 'webview'
+    publishVersion = '0.0.1'
+    desc = 'ui webview'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    website = rootProject.website
+    licences = rootProject.licences
 }

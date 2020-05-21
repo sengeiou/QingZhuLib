@@ -3,7 +3,12 @@
     package="com.cisdi.qingzhu.webview">
 
     <application>
-        <activity android:name=".ui.X5WebViewActivity" />
+        <activity
+            android:name=".ui.X5WebViewActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseCoreTheme.NoActionBar" />
     </application>
 
 </manifest>

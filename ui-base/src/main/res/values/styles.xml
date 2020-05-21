@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="QZAppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/qz_color_primary</item>
+        <item name="colorPrimaryDark">@color/qz_color_primary_dark</item>
+        <item name="colorAccent">@color/qz_color_accent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="toolbarHeight">@dimen/toolbar_height</item>
+        <item name="toolbarLineVisible">false</item>
+        <item name="toolbarTitleAppearance">@style/ToolbarTitleAppearance</item>
+        <item name="android:windowBackground">@color/qz_window_background</item>
+    </style>
+
+    <style name="ToolbarLine">
+        <item name="android:background">@color/toolbar_line_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/toolbar_line_height</item>
+    </style>
+
+    <style name="ToolbarTitleAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/toolbar_title_text_color</item>
+    </style>
+
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="toolbarHeight" format="dimension" />
+    <attr name="toolbarTitleAppearance" format="reference" />
+    <attr name="toolbarLineVisible" format="boolean" />
+    <item name="view_status_bar" type="id" />
+</resources>

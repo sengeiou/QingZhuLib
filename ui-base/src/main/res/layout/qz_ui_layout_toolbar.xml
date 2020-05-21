@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/toolbarHeight"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/toolbarHeight"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="?attr/toolbarTitleAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxWidth="240dp"
+            android:maxLines="1" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:id="@+id/app_bar_line"
+        style="@style/ToolbarLine"
+        android:visibility="?attr/toolbarLineVisible" />
+
+</com.google.android.material.appbar.AppBarLayout>

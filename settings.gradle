@@ -1,0 +1,5 @@
+rootProject.name='QingZhuLib'
+include ':app'
+include ':jsbridge'
+include ':ui-webview'
+include ':ui-base'

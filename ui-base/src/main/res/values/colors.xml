@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="qz_color_primary">#1881F7</color>
+    <color name="qz_color_primary_dark">#1881F7</color>
+    <color name="qz_color_accent">#1881F7</color>
+    <color name="toolbar_title_text_color">@android:color/white</color>
+    <color name="toolbar_line_color">#DDDDDD</color>
+    <color name="qz_window_background">#F8F8F8</color>
+</resources>

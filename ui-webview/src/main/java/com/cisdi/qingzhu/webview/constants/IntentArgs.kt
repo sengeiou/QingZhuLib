@@ -1,18 +1,14 @@
 package com.cisdi.qingzhu.webview.constants
 
 object IntentArgs {
-    const val ARGS_ID = "ID"
-    const val ARGS_KEY = "KEY"
-    const val ARGS_BEAN = "BEAN"
-    const val ARGS_DATA = "DATA"
-    const val ARGS_TYPE = "TYPE"
-    const val ARGS_POSITION = "POSITION"
+    /** 图片选择 **/
+    const val IMAGE_PICKER = 1001
 
-    //  状态
-    const val ARGS_STATUS = "STATUS"
+    /** 视频选择 **/
+    const val VIDEO_PICKER = 1002
 
-    //  标识位置
-    const val ARGS_FLAG = "FLAG"
+    /** 文件选择 **/
+    const val FILE_PICKER = 1003
 
     //  标题
     const val ARGS_TITLE = "TITLE"

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
-import com.cisdi.qingzhu.webview.entity.ThemeSpec
 import com.cisdi.qingzhu.webview.ui.X5WebViewActivity
 
 class MainActivity : AppCompatActivity() {

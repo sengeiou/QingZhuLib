@@ -4,19 +4,16 @@ import android.content.Context
 import com.cisdi.qingzhu.jsbridge.BridgeHandler
 import com.cisdi.qingzhu.jsbridge.CallBackFunction
 import com.cisdi.qingzhu.webview.data.callback.CallBackCreator
-import org.jetbrains.anko.toast
+import com.cisdi.qingzhu.webview.data.protocol.HandlerPlatform
 
 /**
- * 支持弹出吐司
+ * 返回平台信息
  *
  * @author lh
  */
-class ToastHandler : BridgeHandler() {
+class PlatformHandler : BridgeHandler() {
 
     override fun handler(context: Context, data: String?, function: CallBackFunction?) {
-        if (!data.isNullOrEmpty()) {
-            context.toast(data)
-        }
-        function?.onCallBack(CallBackCreator.createSuccess(null))
+        function?.onCallBack(CallBackCreator.createSuccess(HandlerPlatform()))
     }
 }

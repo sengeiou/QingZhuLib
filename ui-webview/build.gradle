@@ -31,6 +31,8 @@ dependencies {
     implementation 'com.cisdi.qingzhu:jsbridge:1.0.0'
     //image picker
     compileOnly 'com.lcy.base:easyPhotos:1.0.5'
+    //定位
+    compileOnly 'com.amap.api:location:4.9.0'
     //鲁班图片压缩
     implementation 'top.zibin:Luban-turbo:1.0.0'
     implementation files('libs/pldroid-shortvideo-1.16.2.jar')

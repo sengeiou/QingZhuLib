@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -11,6 +12,10 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -26,4 +31,15 @@ dependencies {
     compileOnly 'me.yokeyword:fragmentationx:1.0.1'
     //zxing
     implementation "com.google.zxing:core:3.3.3"
+}
+
+publish {
+    artifactId = 'qrcode-zbar'
+    uploadName = 'qrcode-zbar'
+    publishVersion = '1.0.0'
+    desc = 'qrcode zbar'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    website = rootProject.website
+    licences = rootProject.licences
 }

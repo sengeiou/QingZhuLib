@@ -29,6 +29,9 @@ object Handlers {
     /** 关闭Web页面 **/
     const val CLOSE_WINDOW = "closeWindow"
 
+    /** 关闭Web页面 **/
+    const val CLOSE_WINDOW_CALLBACK = "handlerCloseWindow"
+
     /** 代理接口请求 **/
     const val NATIVE_AJAX = "nativeAjax"
 

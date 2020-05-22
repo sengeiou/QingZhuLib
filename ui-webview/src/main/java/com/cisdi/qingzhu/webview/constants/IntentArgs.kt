@@ -10,6 +10,9 @@ object IntentArgs {
     /** 文件选择 **/
     const val FILE_PICKER = 1003
 
+    /** 二维码扫描 **/
+    const val QR_SCAN = 1004
+
     //  标题
     const val ARGS_TITLE = "TITLE"
 

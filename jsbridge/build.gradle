@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
@@ -29,4 +30,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly 'com.google.code.gson:gson:2.8.6'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+publish {
+    artifactId = 'js-bridge'
+    uploadName = 'js-bridge'
+    publishVersion = '1.0.0'
+    desc = 'js bridge'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    website = rootProject.website
+    licences = rootProject.licences
 }

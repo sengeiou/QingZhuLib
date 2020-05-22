@@ -8,9 +8,17 @@ import android.text.TextUtils
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import com.cisdi.qingzhu.jsbridge.CallBackFunction
+import com.cisdi.qingzhu.qrcode.ui.QRScanActivity
+import com.cisdi.qingzhu.qrcode.util.QRCodeEncoder
 import com.cisdi.qingzhu.webview.R
 import com.cisdi.qingzhu.webview.constants.Constant
 import com.cisdi.qingzhu.webview.constants.IntentArgs
+import com.cisdi.qingzhu.webview.constants.JsConstant
+import com.cisdi.qingzhu.webview.contract.WebViewContract
+import com.cisdi.qingzhu.webview.data.callback.CallBackCreator
+import com.cisdi.qingzhu.webview.data.protocol.HandlerQrCode
+import com.cisdi.qingzhu.webview.presenter.WebViewPresenter
 import com.cisdi.qingzhu.webview.utils.OpenUrlUtil
 import com.cisdi.qingzhu.webview.video.CompressCallback
 import com.cisdi.qingzhu.webview.video.VideoCompress
@@ -21,7 +29,7 @@ import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.constant.Type
 import com.huantansheng.easyphotos.models.album.entity.Photo
 import com.huantansheng.easyphotos.setting.Setting
-import com.lcy.base.core.ui.activity.SimpleActivity
+import com.lcy.base.core.ui.activity.BaseActivity
 import com.lcy.base.core.utils.UriUtils
 import com.qiniu.pili.droid.shortvideo.PLErrorCode
 import com.tencent.smtt.export.external.interfaces.JsResult
@@ -32,12 +40,14 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.ResourceObserver
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import top.zibin.luban.Luban
 import java.io.File
 import java.util.*
 
-class X5WebViewActivity : SimpleActivity() {
+class X5WebViewActivity : BaseActivity<WebViewContract.View, WebViewPresenter>(),
+    WebViewContract.View {
 
     /**  X5内核浏览器 **/
     private var mX5WebView: BridgeX5WebView? = null
@@ -54,6 +64,9 @@ class X5WebViewActivity : SimpleActivity() {
 
     /** 选择的图片 **/
     private var mSelected: ArrayList<Uri>? = null
+
+    /** 二维码回调 **/
+    private var mQrCodeCallBack: CallBackFunction? = null
 
     companion object {
         fun start(context: Context, url: String, title: String = "") {
@@ -73,6 +86,10 @@ class X5WebViewActivity : SimpleActivity() {
     }
 
     override fun getLayout(): Int = R.layout.activity_x5_web_view
+
+    override fun initInject() {
+        mPresenter = WebViewPresenter()
+    }
 
     override fun initEventAndData() {
         mContainer = findViewById(R.id.web_container)
@@ -216,6 +233,14 @@ class X5WebViewActivity : SimpleActivity() {
                     videoCompress(list)
                 }
             }
+            IntentArgs.QR_SCAN -> {
+                if (resultCode == RESULT_OK && data?.hasExtra(QRScanActivity.ARGS_QR_CODE) == true) {
+                    val result = data.getStringExtra(QRScanActivity.ARGS_QR_CODE)
+                    mQrCodeCallBack?.onCallBack(CallBackCreator.createSuccess(HandlerQrCode(result)))
+                } else {
+                    mQrCodeCallBack?.onCallBack(CallBackCreator.createError(errorMsg = "qrcode result null"))
+                }
+            }
             else -> {
 
             }
@@ -310,4 +335,38 @@ class X5WebViewActivity : SimpleActivity() {
         }
     }
 
+    override fun grantedPermission(granted: Boolean) {
+
+    }
+
+    /**
+     * 相册,相机相关
+     */
+    override fun onMediaEvent(type: Int, callback: CallBackFunction?) {
+        when (type) {
+            JsConstant.MEDIA_QR_CODE -> {
+                mQrCodeCallBack = callback
+                startActivityForResult<QRScanActivity>(IntentArgs.QR_SCAN)
+            }
+        }
+    }
+
+    /**
+     * 读取身份证
+     */
+    override fun onIdCardEvent(front: Boolean, callback: CallBackFunction?) {
+        // TODO 启动扫描身份证
+
+    }
+
+    /**
+     * 打开,关闭页面
+     */
+    override fun onWindowEvent(url: String, callback: CallBackFunction?) {
+        //优先判断页面信息
+        if (mUrl.equals(url)) {
+            callback?.onCallBack(CallBackCreator.createSuccess(null))
+            finish()
+        }
+    }
 }

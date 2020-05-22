@@ -20,44 +20,38 @@ import org.jetbrains.anko.startActivity
  *
  * @author lh
  */
-class WindowHandler : BridgeHandler() {
+class WindowCloseHandler : BridgeHandler() {
 
     override fun handler(context: Context, data: String?, function: CallBackFunction?) {
         if (data.isNullOrEmpty()) {
-            function?.onCallBack(CallBackCreator.createError("data can not be null!"))
+            closeTopWebView(null, function)
             return
         }
         try {
             val requestData = GsonConvertUtil.fromJson(data, JsRequestData::class.java)
-            //开启新页面
-            if (requestData.open) {
-                if (requestData.url.isNullOrEmpty()) {
-                    function?.onCallBack(CallBackCreator.createError("url is needed!"))
-                } else {
-                    context.startActivity<X5WebViewActivity>(IntentArgs.ARGS_URL to requestData.url)
-                    function?.onCallBack(CallBackCreator.createSuccess(null))
-                }
-                return
-            }
-            //关闭页面
-            val currentActivity = CoreApplication.instance().currentActivity()
-            if (requestData.url.isNullOrEmpty() && currentActivity is X5WebViewActivity) {
-                currentActivity.finish()
-                function?.onCallBack(CallBackCreator.createSuccess(null))
-                return
-            }
+            if (closeTopWebView(requestData, function)) return
             //发送Event事件,根据url关闭页面
             RxBus.post(
                 BaseEvent(
                     JsConstant.EVENT_CLOSE_WINDOW,
-                    JsEvent(
-                        params = requestData.url,
-                        callback = function
-                    )
+                    JsEvent(params = requestData.url, callback = function)
                 )
             )
         } catch (e: Exception) {
             function?.onCallBack(CallBackCreator.createError(e.message ?: "json convert error!"))
         }
+    }
+
+    private fun closeTopWebView(requestData: JsRequestData?, function: CallBackFunction?): Boolean {
+        //关闭页面
+        val currentActivity = CoreApplication.instance().currentActivity()
+        if (currentActivity is X5WebViewActivity) {
+            if (requestData == null || requestData.url.isNullOrEmpty()) {
+                currentActivity.finish()
+                function?.onCallBack(CallBackCreator.createSuccess(null))
+                return true
+            }
+        }
+        return false
     }
 }

@@ -26,6 +26,22 @@
     />
 </p>
 <p>
+    <input type="button" id="openBaidu" value="调用Native打开窗口Baidu" onclick="testOpenBaidu();"
+    />
+</p>
+<p>
+    <input type="button" id="openNews" value="调用Native打开窗口New" onclick="testOpenNews();"
+    />
+</p>
+<p>
+    <input type="button" id="closeBaidu" value="调用Native关闭窗口Baidu" onclick="testCloseBaidu();"
+    />
+</p>
+<p>
+    <input type="button" id="closeNews" value="调用Native关闭窗口New" onclick="testCloseNews();"
+    />
+</p>
+<p>
     <input type="button" id="enter1" value="调用Native方法(Toast)" onclick="testClick1();"
     />
 </p>
@@ -44,7 +60,48 @@
             window.WebViewJavascriptBridge.callHandler('request',
                 data
                 , function(responseData) {
+                    testClick1();
+                    console.log('native return->'+responseData);
+                }
+            );
+        }
 
+
+        function testOpenBaidu() {
+            var data = {open: 'true' ,url: 'http://m.baidu.com'};
+            window.WebViewJavascriptBridge.callHandler('openWindow',
+                data
+                , function(responseData) {
+                    console.log('native return->'+responseData);
+                }
+            );
+        }
+
+        function testOpenNews() {
+            var data = {open: 'true' ,url: 'http://news.baidu.com/'};
+            window.WebViewJavascriptBridge.callHandler('openWindow',
+                data
+                , function(responseData) {
+                    console.log('native return->'+responseData);
+                }
+            );
+        }
+
+        function testCloseBaidu() {
+            var data = {};
+            window.WebViewJavascriptBridge.callHandler('closeWindow',
+                data
+                , function(responseData) {
+                    console.log('native return->'+responseData);
+                }
+            );
+        }
+
+        function testCloseNews() {
+            var data = {open: 'false' ,url: 'http://news.baidu.com/'};
+            window.WebViewJavascriptBridge.callHandler('closeWindow',
+                data
+                , function(responseData) {
                     console.log('native return->'+responseData);
                 }
             );
@@ -126,6 +183,22 @@
                 }
             });
         })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>

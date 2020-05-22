@@ -8,6 +8,6 @@ import com.cisdi.qingzhu.jsbridge.CallBackFunction
  * @author lh
  */
 data class JsEvent<T>(
-    var params: T,
+    var params: T? = null,
     var callback: CallBackFunction? = null
 )

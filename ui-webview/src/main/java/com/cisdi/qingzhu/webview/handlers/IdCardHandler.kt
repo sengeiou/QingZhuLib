@@ -21,9 +21,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
  *
  * @author lh
  */
-abstract class IdCardHandler : BridgeHandler() {
-
-    abstract fun mediaType(): Int
+class IdCardHandler : BridgeHandler() {
 
     @SuppressLint("CheckResult")
     override fun handler(context: Context, data: String?, function: CallBackFunction?) {

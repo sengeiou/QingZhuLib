@@ -28,9 +28,11 @@ dependencies {
     //腾讯X5Web
     implementation 'com.tencent.tbs.tbssdk:sdk:43903'
     //JsBridge
-    implementation 'com.cisdi.qingzhu:jsbridge:1.0.0'
+    api 'com.cisdi.qingzhu:jsbridge:1.0.0'
     //image picker
     compileOnly 'com.lcy.base:easyPhotos:1.0.5'
+    //zbar
+    api 'cn.com.cisdi.qingzhu:qrcode-zbar:1.0.0'
     //定位
     compileOnly 'com.amap.api:location:4.9.0'
     //鲁班图片压缩
@@ -41,7 +43,7 @@ dependencies {
 //publish {
 //    artifactId = 'webview'
 //    uploadName = 'webview'
-//    publishVersion = '0.0.1'
+//    publishVersion = '1.0.0'
 //    desc = 'ui webview'
 //    userOrg = rootProject.userOrg
 //    groupId = rootProject.groupId

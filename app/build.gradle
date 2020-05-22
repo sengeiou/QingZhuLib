@@ -14,6 +14,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
     }
 
     buildTypes {
@@ -32,6 +36,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation project(':ui-webview')
+    implementation project(':qrcode-zbar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -43,4 +48,6 @@ dependencies {
         exclude group: 'com.ogaclejapan.smarttablayout', module: 'library'
         exclude group: 'com.ogaclejapan.smarttablayout', module: 'utils-v4'
     }
+    //fragment管理框架
+    implementation 'me.yokeyword:fragmentationx:1.0.1'
 }

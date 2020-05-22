@@ -1,0 +1,13 @@
+<resources>
+    <string name="zbar_app_name">二维码扫描</string>
+    <string name="zbar_title_activity_zbar_scan">扫一扫</string>
+    <string name="zbar_camera_permission_request_hint">扫一扫正在申请相机权限</string>
+    <string name="zbar_camera_permission_request_agree">同意</string>
+    <string name="zbar_camera_permission_request_cancel">取消</string>
+    <string name="zbar_camera_permission_needed">扫一扫需要相机权限，请获取后重试！</string>
+    <string name="zbar_camera_permission_cancel">返回</string>
+    <string name="zbar_ambient_brightness_tip">\n环境过暗，请打开闪光灯</string>
+    <string name="zbar_ambient_brightness_tip_open">轻点打开</string>
+    <string name="zbar_ambient_brightness_tip_close">轻点关闭</string>
+    <string name="zbar_open_camera_error">打开相机出错！</string>
+</resources>

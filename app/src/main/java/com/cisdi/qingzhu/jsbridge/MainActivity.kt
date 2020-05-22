@@ -1,11 +1,12 @@
 package com.cisdi.qingzhu.jsbridge
 
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
-import com.cisdi.qingzhu.webview.ui.X5WebViewActivity
+import com.cisdi.qingzhu.qrcode.ui.QRScanActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        X5WebViewActivity.start(this, url)
+        // X5WebViewActivity.start(this, url)
+        startActivity(Intent(this, QRScanActivity::class.java))
     }
 
 

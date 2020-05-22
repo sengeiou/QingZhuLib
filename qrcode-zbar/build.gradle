@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -16,7 +15,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly 'androidx.appcompat:appcompat:1.1.0'
     compileOnly('com.lcy.base:core:1.2.6') {
         exclude group: 'me.yokeyword', module: 'fragmentation'
@@ -25,24 +24,6 @@ dependencies {
     }
     //fragment管理框架
     compileOnly 'me.yokeyword:fragmentationx:1.0.1'
-    //腾讯X5Web
-    implementation 'com.tencent.tbs.tbssdk:sdk:43903'
-    //JsBridge
-    implementation 'com.cisdi.qingzhu:jsbridge:1.0.0'
-    //image picker
-    compileOnly 'com.lcy.base:easyPhotos:1.0.5'
-    //鲁班图片压缩
-    implementation 'top.zibin:Luban-turbo:1.0.0'
-    implementation files('libs/pldroid-shortvideo-1.16.2.jar')
-}
-
-publish {
-    artifactId = 'webview'
-    uploadName = 'webview'
-    publishVersion = '0.0.1'
-    desc = 'ui webview'
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    website = rootProject.website
-    licences = rootProject.licences
+    //zxing
+    implementation "com.google.zxing:core:3.3.3"
 }

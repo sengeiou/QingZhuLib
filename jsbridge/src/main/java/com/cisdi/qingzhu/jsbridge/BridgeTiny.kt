@@ -17,7 +17,11 @@ class BridgeTiny(private val mWebView: IWebView) {
 
     init {
         mWebView.addJavascriptInterface(
-            BridgeJavascriptInterface(mCallbacks, this, mWebView), BridgeUtil.INTERFACE_NAME
+            BridgeJavascriptInterface(
+                mCallbacks,
+                this,
+                mWebView
+            ), BridgeUtil.INTERFACE_NAME
         )
         mMessageHandlers?.putAll(Bridge.instance.getMessageHandlers())
     }
@@ -26,7 +30,10 @@ class BridgeTiny(private val mWebView: IWebView) {
         get() = mMessageHandlers
 
     fun webViewLoadJs(view: IWebView) {
-        view.loadUrl(String.format(BridgeUtil.JAVASCRIPT_STR, BridgeUtil.WebviewJavascriptBridge))
+        view.loadUrl(String.format(
+            BridgeUtil.JAVASCRIPT_STR,
+            BridgeUtil.WebviewJavascriptBridge
+        ))
         if (mMessages != null) {
             for (message in mMessages!!) {
                 dispatchMessage(message)
@@ -84,7 +91,10 @@ class BridgeTiny(private val mWebView: IWebView) {
         if (data == null || data !is String) {
             return
         }
-        val request = JSRequest(data = data, handlerName = handlerName)
+        val request = JSRequest(
+            data = data,
+            handlerName = handlerName
+        )
         if (responseCallback != null) {
             val callbackId = String.format(
                 BridgeUtil.CALLBACK_ID_FORMAT,

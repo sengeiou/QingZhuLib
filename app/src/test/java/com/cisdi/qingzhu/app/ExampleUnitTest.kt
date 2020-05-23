@@ -1,4 +1,4 @@
-package com.cisdi.qingzhu.jsbridge
+package com.cisdi.qingzhu.app
 
 import org.junit.Test
 

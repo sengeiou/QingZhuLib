@@ -6,4 +6,7 @@ object Constant {
 
     /**最少选择图片张数**/
     const val MIN_PICKER_NUM = 1
+
+    /** 最大录制时长 **/
+    const val MAX_RECORD_SECOND = 300
 }

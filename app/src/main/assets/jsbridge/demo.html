@@ -10,7 +10,7 @@
 
 <body>
 <p id="show">
-
+    阿达瓦
 </p>
 <p id="init">
 
@@ -53,14 +53,11 @@
 <script>
 
         function testClick() {
-            var str1 = document.getElementById("text1").value;
-            var str2 = document.getElementById("text2").value;
-
-            var data = {url: 'www.baidu.com', userName: str1, passwd: str2};
-            window.WebViewJavascriptBridge.callHandler('request',
+            var data = {onlyCamera: 'false', filterMinSecond: '0', filterMaxSecond: '9', maxRecordSecond: '3'};
+            window.WebViewJavascriptBridge.callHandler('recordVideo',
                 data
                 , function(responseData) {
-                    testClick1();
+                    bridgeLog(responseData)
                     console.log('native return->'+responseData);
                 }
             );
@@ -183,6 +180,8 @@
                 }
             });
         })
+
+
 
 
 

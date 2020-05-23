@@ -28,9 +28,10 @@ dependencies {
     //腾讯X5Web
     implementation 'com.tencent.tbs.tbssdk:sdk:43903'
     //JsBridge
-    api 'com.cisdi.qingzhu:jsbridge:1.0.0'
+    //api 'com.cisdi.qingzhu:jsbridge:1.0.0'
+    api project(':jsbridge')
     //image picker
-    compileOnly 'com.lcy.base:easyPhotos:1.0.5'
+    api 'com.lcy.base:easyPhotos:1.0.5'
     //zbar
     api 'cn.com.cisdi.qingzhu:qrcode-zbar:1.0.0'
     //定位

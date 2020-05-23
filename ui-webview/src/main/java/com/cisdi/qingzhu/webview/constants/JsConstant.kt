@@ -17,11 +17,11 @@ object JsConstant {
     /** 拍照 **/
     const val MEDIA_PHOTO: Int = 2
 
-    /** 拍照 **/
+    /** 录像 **/
     const val MEDIA_VIDEO: Int = 3
 
     /** 扫描二维码 **/
-    const val MEDIA_QR_CODE: Int = 4
+    const val MEDIA_QR_SCAN: Int = 4
 
     /** 关闭窗口 **/
     const val EVENT_CLOSE_WINDOW: Long = 0x10001101
@@ -31,6 +31,9 @@ object JsConstant {
 
     /** 资源请求 **/
     const val EVENT_MEDIA: Long = 0x10001103
+
+    /** 二维码 **/
+    const val EVENT_QR_SCAN: Long = 0x10001104
 
 
 }

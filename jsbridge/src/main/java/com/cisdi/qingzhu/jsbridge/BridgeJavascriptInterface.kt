@@ -22,7 +22,12 @@ class BridgeJavascriptInterface(
             if (bridge.messageHandlers?.containsKey(handlerName) == true) {
                 val bridgeHandler: BridgeHandler =
                     bridge.messageHandlers!![handlerName] ?: return@post
-                bridgeHandler.handler(webView.context(), data, CallBack(callbackId, bridge))
+                bridgeHandler.handler(webView.context(), data,
+                    CallBack(
+                        callbackId,
+                        bridge
+                    )
+                )
             }
         }
     }

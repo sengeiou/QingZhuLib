@@ -1,6 +1,5 @@
-package com.cisdi.qingzhu.jsbridge
+package com.cisdi.qingzhu.app
 
-import android.app.Application
 import com.lcy.base.core.common.CoreApplication
 import skin.support.SkinCompatManager
 import skin.support.app.SkinAppCompatViewInflater

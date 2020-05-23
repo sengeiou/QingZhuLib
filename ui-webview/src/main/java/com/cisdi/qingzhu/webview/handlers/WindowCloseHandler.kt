@@ -3,7 +3,6 @@ package com.cisdi.qingzhu.webview.handlers
 import android.content.Context
 import com.cisdi.qingzhu.jsbridge.BridgeHandler
 import com.cisdi.qingzhu.jsbridge.CallBackFunction
-import com.cisdi.qingzhu.webview.constants.IntentArgs
 import com.cisdi.qingzhu.webview.constants.JsConstant
 import com.cisdi.qingzhu.webview.data.event.JsEvent
 import com.cisdi.qingzhu.webview.data.callback.CallBackCreator

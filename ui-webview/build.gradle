@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -28,8 +28,7 @@ dependencies {
     //腾讯X5Web
     implementation 'com.tencent.tbs.tbssdk:sdk:43903'
     //JsBridge
-    //api 'com.cisdi.qingzhu:jsbridge:1.0.0'
-    api project(':jsbridge')
+    api 'cn.com.cisdi.qingzhu:js-bridge:1.0.1'
     //image picker
     api 'com.lcy.base:easyPhotos:1.0.5'
     //zbar
@@ -41,13 +40,13 @@ dependencies {
     implementation files('libs/pldroid-shortvideo-1.16.2.jar')
 }
 
-//publish {
-//    artifactId = 'webview'
-//    uploadName = 'webview'
-//    publishVersion = '1.0.0'
-//    desc = 'ui webview'
-//    userOrg = rootProject.userOrg
-//    groupId = rootProject.groupId
-//    website = rootProject.website
-//    licences = rootProject.licences
-//}
+publish {
+    artifactId = 'webview'
+    uploadName = 'webview'
+    publishVersion = '1.0.1'
+    desc = 'ui webview'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    website = rootProject.website
+    licences = rootProject.licences
+}
